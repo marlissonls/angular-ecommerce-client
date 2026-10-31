@@ -1,0 +1,71 @@
+<header class="store-header">
+  <div class="header-main">
+    <button
+      class="header-menu-toggle"
+      type="button"
+      (click)="toggleMenu()"
+      [attr.aria-label]="menuOpen() ? 'Fechar menu' : 'Abrir menu'"
+      [attr.aria-expanded]="menuOpen()"
+    >
+      @if (menuOpen()) {
+        <svg lucideX [size]="22"></svg>
+      } @else {
+        <svg lucideMenu [size]="22"></svg>
+      }
+    </button>
+
+    <a routerLink="/" class="header-logo" (click)="closeMenu()">
+      URBANA
+    </a>
+
+    <form class="header-search" (ngSubmit)="handleSearch()">
+      <input
+        type="search"
+        placeholder="Buscar produtos..."
+        [(ngModel)]="search"
+        name="search"
+        aria-label="Buscar produtos"
+      />
+
+      <button type="submit" aria-label="Pesquisar">
+        <svg lucideSearch [size]="20"></svg>
+      </button>
+    </form>
+
+    <div class="header-actions">
+      <a routerLink="/login" class="header-action">
+        <svg lucideUserRound [size]="21"></svg>
+        <span>Minha conta</span>
+      </a>
+
+      <a routerLink="/favorites" class="header-action">
+        <svg lucideHeart [size]="21"></svg>
+        <span>Favoritos</span>
+      </a>
+
+      <a routerLink="/cart" class="header-action">
+        <span class="header-cart-icon">
+          <svg lucideShoppingCart [size]="21"></svg>
+
+          @if (cartCount() > 0) {
+            <span class="cart-count">{{ cartCount() }}</span>
+          }
+        </span>
+
+        <span>Carrinho</span>
+      </a>
+    </div>
+  </div>
+
+  <nav class="header-nav" [class.is-open]="menuOpen()">
+    <a routerLink="/" (click)="closeMenu()">Início</a>
+    <a routerLink="/catalog" (click)="closeMenu()">Catálogo</a>
+    <a
+      routerLink="/catalog"
+      [queryParams]="{ filter: 'offers' }"
+      (click)="closeMenu()"
+    >
+      Ofertas
+    </a>
+  </nav>
+</header>
