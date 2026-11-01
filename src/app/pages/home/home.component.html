@@ -1,0 +1,18 @@
+<app-hero />
+
+<app-featured-categories
+  [categories]="categories()"
+  [loading]="loading().categories"
+/>
+
+<app-featured-products
+  [products]="featuredProducts()"
+  [loading]="loading().featured"
+/>
+
+<app-new-arrivals
+  [products]="newArrivals()"
+  [loading]="loading().newArrivals"
+/>
+
+<app-store-benefits />

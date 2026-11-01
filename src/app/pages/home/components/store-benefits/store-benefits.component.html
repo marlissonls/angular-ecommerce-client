@@ -1,0 +1,31 @@
+<section class="border-y border-[#E2E3DD] bg-[#FCFCFA] py-14 lg:py-16">
+  <div class="mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8">
+    <div class="mb-10 max-w-xl">
+      <span class="text-xs font-semibold uppercase tracking-[0.2em] text-[#747A74]">
+        Por que comprar na Urbana?
+      </span>
+
+      <h2 class="mt-2 text-2xl font-bold tracking-tight text-[#272B28] sm:text-3xl">
+        Uma experiência de compra feita para você.
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+      @for (benefit of benefits; track benefit.number) {
+        <div>
+          <span class="text-xs font-semibold tracking-widest text-[#34483A]">
+            {{ benefit.number }}
+          </span>
+
+          <h3 class="mt-4 text-base font-semibold text-[#272B28]">
+            {{ benefit.title }}
+          </h3>
+
+          <p class="mt-2 text-sm leading-relaxed text-[#747A74]">
+            {{ benefit.description }}
+          </p>
+        </div>
+      }
+    </div>
+  </div>
+</section>
